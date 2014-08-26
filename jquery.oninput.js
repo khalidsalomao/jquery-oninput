@@ -8,7 +8,7 @@
 jQuery.fn.input = function(fn) {
 	var _this = this;   
     if (fn) {
-        return _this.bind("input propertychange", function (evt) {
+        return _this.bind("input propertychange", function (event) {
             // If it's the propertychange event, make sure it's the value that changed.
             if (window.event && event.type == "propertychange" && event.propertyName != "value")
                 return;
@@ -16,7 +16,7 @@ jQuery.fn.input = function(fn) {
             // Clear any previously set timer before setting a fresh one
             window.clearTimeout(_this.data("timeout"));
             _this.data("timeout", setTimeout(function () {
-                fn.call(this, evt);
+                fn.call(this, event);
             }, 1000));
         });
     }
